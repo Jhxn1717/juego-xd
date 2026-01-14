@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No mientas❌</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url("https://i.pinimg.com/736x/75/88/fd/7588fd0c1381a97f59beaf0d7076f132.jpg");
+            background-size: 100% 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .contenedor {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .pregunta {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .pregunta p {
+            margin-top: 15px;
+        }
+
+        .gif-pregunta {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+        }
+
+        .botones {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            height: 50px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.1s ease;
+            position: absolute;
+        }
+
+        #btnSi {
+            background-color: #ff6b6b;
+            color: white;
+            width: 45%;
+            left: 0;
+            top: 0;
+        }
+
+        #btnNo {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 45%;
+            right: 0;
+            top: 0;
+        }
+
+        #btnNo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        #btnNo:active {
+            transform: translateY(0);
+        }
+
+        .mensaje {
+            display: none;
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            border-radius: 8px;
+            color: #2e7d32;
+            margin-top: 20px;
+            animation: slideIn 0.3s ease;
+        }
+
+        .mensaje.visible {
+            display: block;
+        }
+
+        .mensaje h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .mensaje p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .gif-mensaje {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reset {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .reset.visible {
+            display: block;
+        }
+
+        #btnReset {
+            background-color: #ff9800;
+            color: white;
+            padding: 10px 20px;
+            position: relative;
+            width: auto;
+            left: auto;
+            right: auto;
+            top: auto;
+        }
+
+        #btnReset:hover {
+            background-color: #f57c00;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="pregunta">
+            <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTR5MzI0dTB4NjQxcXJndzZuZXBnanN2bTlxZzQzMjdsbWtiZjlmNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/b1h80kgemNIPiQHeQO/giphy.gif" alt="pregunta" class="gif-pregunta">
+            <p>¿Nicole te bañaste hoy?</p>
+        </div>
+
+        <div class="botones">
+            <button id="btnSi">Sí</button>
+            <button id="btnNo">No</button>
+        </div>
+
+        <div id="mensaje" class="mensaje">
+            <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGg4OWY1MXdwcmsxb2FhY210aWhmczFiMG0wM3Q2cWN1dTV5aTdxbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/odIt5RqXhRsDm/giphy.gif" alt="mensaje" class="gif-mensaje">
+            <h3>Bonita pero cochina 😜🤦‍♂️😗</h3>
+        </div>
+
+        <div class="reset">
+            <button id="btnReset">Bañarse ahora ✅🚿</button>
+        </div>
+    </div>
+
+    <script>
+        const btnSi = document.getElementById('btnSi');
+        const btnNo = document.getElementById('btnNo');
+        const btnReset = document.getElementById('btnReset');
+        const mensaje = document.getElementById('mensaje');
+        const resetDiv = document.querySelector('.reset');
+
+        // Cuando el mouse se acerca al botón "Sí", se aleja
+        btnSi.addEventListener('mouseenter', function(e) {
+            const randomX = Math.random() * 300 - 150;
+            const randomY = Math.random() * 300 - 150;
+            
+            btnSi.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        });
+
+        // También se aleja si intenta hacer clic
+        btnSi.addEventListener('mousemove', function(e) {
+            const randomX = Math.random() * 300 - 150;
+            const randomY = Math.random() * 300 - 150;
+            
+            btnSi.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        });
+
+        // Prevenir que se haga clic en él
+        btnSi.addEventListener('click', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // Al hacer clic en "No"
+        btnNo.addEventListener('click', function() {
+            mensaje.classList.add('visible');
+            resetDiv.classList.add('visible');
+            btnNo.disabled = true;
+            btnNo.style.opacity = '0.6';
+            btnNo.style.cursor = 'not-allowed';
+        });
+
+        // Botón para reiniciar
+        btnReset.addEventListener('click', function() {
+            mensaje.classList.remove('visible');
+            resetDiv.classList.remove('visible');
+            btnNo.disabled = false;
+            btnNo.style.opacity = '1';
+            btnNo.style.cursor = 'pointer';
+            btnSi.style.transform = 'translate(0, 0)';
+        });
+    </script>
+</body>
+</html>
